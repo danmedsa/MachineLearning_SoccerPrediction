@@ -1,7 +1,7 @@
 # MachineLearning_SoccerPrediction
 
 ZIP of the whole project, due to upload size limitations by github:
-https://drive.google.com/file/d/0B5dOWg0uoH8KNDZhNTlDajRhMmc/view?usp=sharing
+https://drive.google.com/file/d/0B5dOWg0uoH8Kb3RmNkNMaDJ0Y00/view?usp=sharing
   + includes 'database.sqlite'
   + includes Pickle folder with all the pickled data
 
