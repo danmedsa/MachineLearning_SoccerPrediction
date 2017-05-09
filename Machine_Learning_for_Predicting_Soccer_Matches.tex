@@ -1,0 +1,907 @@
+
+%% bare_jrnl_compsoc.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% Computer Society journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[10pt,journal,compsoc]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+%
+% Note that some packages require special options to format as the Computer
+% Society requires. In particular, Computer Society  papers do not use
+% compressed citation ranges as is done in typical IEEE papers
+% (e.g., [1]-[4]). Instead, they list every citation separately in order
+% (e.g., [1], [2], [3], [4]). To get the latter we need to load the cite
+% package with the nocompress option which is supported by cite.sty v4.0
+% and later. Note also the use of a CLASSOPTION conditional provided by
+% IEEEtran.cls V1.7 and later.
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+%\usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+ % \graphicspath{{../Desktop/}{}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+% \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+\usepackage{graphicx}
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=footnotesize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a sans serif font rather
+% than the serif font used in traditional IEEE formatting and thus the need
+% to invoke different subfig.sty package options depending on whether
+% compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+\usepackage{listings}
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Machine Learning for Predicting Soccer\\ Matches}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+%
+%\IEEEcompsocitemizethanks is a special \thanks that produces the bulleted
+% lists the Computer Society journals use for "first footnote" author
+% affiliations. Use \IEEEcompsocthanksitem which works much like \item
+% for each affiliation group. When not in compsoc mode,
+% \IEEEcompsocitemizethanks becomes like \thanks and
+% \IEEEcompsocthanksitem becomes a line break with idention. This
+% facilitates dual compilation, although admittedly the differences in the
+% desired content of \author between the different types of papers makes a
+% one-size-fits-all approach a daunting prospect. For instance, compsoc 
+% journal papers have the author affiliations above the "Manuscript
+% received ..."  text while in non-compsoc journals this is reversed. Sigh.
+
+\author{Daniel~Medina Sada,~\IEEEmembership{M.S. Student,~Texas Tech University}% <-this % stops a space
+\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem Daniel Medina Sada is a Masters Student undergoing his studies of Software Engineering in the department of Computer Science at Texas Tech University.\protect\\
+% note need leading \protect in front of \\ to get a newline within \thanks as
+% \\ is fragile and will error, could use \hfil\break instead.
+E-mail: daniel.medina-sada@ttu.edu}% <-this % stops an unwanted space
+\thanks{Manuscript received May 9th, 2017}}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~1, No.~, May~2017}%
+{Medina Sada \MakeLowercase{\textit{}}: Machine Learning for Predicting Soccer Matches
+}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+% The publisher's ID mark at the bottom of the page is less important with
+% Computer Society journal papers as those publications place the marks
+% outside of the main text columns and, therefore, unlike regular IEEE
+% journals, the available text space is not reduced by their presence.
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% or like this to get the Computer Society new two part style.
+%\IEEEpubid{\makebox[\columnwidth]{\hfill 0000--0000/00/\$00.00~\copyright~2015 IEEE}%
+%\hspace{\columnsep}\makebox[\columnwidth]{Published by the IEEE Computer Society\hfill}}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark (Computer Society jorunal
+% papers don't need this extra clearance.)
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+% for Computer Society papers, we must declare the abstract and index terms
+% PRIOR to the title within the \IEEEtitleabstractindextext IEEEtran
+% command as these need to go into the title area created by \maketitle.
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+In this paper, we attempt to create a system to predict the outcome of the soccer matches for a home team. For our data, we use a dataset that contains over 25,000+ matches, with teams along with the attributes describing the type of attack and defense of the team. The teams are from different European leagues. The dataset also contains data of over 10,000+ players and their attributes and the betting odds for each game from many different betting sites. Although the dataset does have all this information, for simplicity and brevity, we only focus on the following data: home team goal difference, away team goal difference, games won by home team, games won by away team, games won against the away team, games lost against the away team, and the overall rating of each individual player form both home and away team. We explore different approaches using different classifiers and techniques to achieve the highiest accuracy possible. In all of our approaches, we trained 4 different classifiers. We use Support Vector Classifier, Naïve Bayes, K Nearest Neighbors and Logistic Regression and we use 88.5\% of the data for training and 11.5\% for testing. The first approach considers all of our matches to train the classifiers. The second approach, we split the matches by league and train the classifiers to predict the outcome of the matches depending on the league it’s played on. The third approach, we use all of the matches to train the different classifiers. For this approach we train a Bernoulli Naïve Bayes classifier and use the result of all of the classifiers to compare their results and choosing the majority or K Nearest Neighbor if there is no majority. 
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Machine Learning, Prediction, Classifiers, Naïve Bayes, K Nearest Neighbor, Logistic Regresion, Support Vector Classifier, Voting Classifier.  
+\end{IEEEkeywords}}
+
+
+% make the title area
+\maketitle
+
+
+% To allow for easy dual compilation without having to reenter the
+% abstract/keywords data, the \IEEEtitleabstractindextext text will
+% not be used in maketitle, but will appear (i.e., to be "transported")
+% here as \IEEEdisplaynontitleabstractindextext when the compsoc 
+% or transmag modes are not selected <OR> if conference mode is selected 
+% - because all conference papers position the abstract like regular
+% papers do.
+\IEEEdisplaynontitleabstractindextext
+% \IEEEdisplaynontitleabstractindextext has no effect when using
+% compsoc or transmag under a non-conference mode.
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
+% Computer Society journal (but not conference!) papers do something unusual
+% with the very first section heading (almost always called "Introduction").
+% They place it ABOVE the main text! IEEEtran.cls does not automatically do
+% this for you, but you can achieve this effect with the provided
+% \IEEEraisesectionheading{} command. Note the need to keep any \label that
+% is to refer to the section immediately after \section in the above as
+% \IEEEraisesectionheading puts \section within a raised box.
+
+
+
+
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps (small caps for compsoc).
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{T}{he} prediction of soccer matches has been an interest to many people. However, there hasn’t been a system that is able to get a high precision. 
+Achieving the goal of correctly predicting soccer matches could be of huge interest to many companies running betting sites or casinos. Although achieving the goal, of creating a system with high precision, is a great challenge due to the unpredictablility characteristic of soccer. If the same game was to be executed twice, it could easily have two different outcomes in the number of goals scores. This means that by only trying to predict whether a game will be won, lost or tied we can achieve a higher accuracy than predicting the score, and could make such a system plausible for achieving a higher accuracy. This is what we will attempt in this paper, to create a system that predicts if the home team will win, lose or draw a game.
+
+
+ 
+\hfill May 9th, 2017
+
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+% However, the Computer Society has been known to put floats at the bottom.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+\section{Explaining the Dataset}
+\subsection{About}
+For this system, we downloaded a dataset from kaggle, by Hugo Mathien [1]. The dataset has information of over 25,000+ matches and over 10,000+ players. The matches of the dataset are from 11 different European countries with their top leagues from the 2008-2009 season to 2015-2016 season and are always in reference to the home team. The dataset contains the following match data for each team: goal difference, games won, games won against opposing team, the starting players, players who scored, players booked and betting odds for that game, from different sources. The data for the teams contains information about line-ups, type of attack, type of defense, type of build play and type of chance creation. The player data contains the overall rating and the rating for each of the attriubtes used in the videogame FIFA, from EA Sports. The information for the teams, as well as for the players was obtained from the videogame FIFA.
+
+\subsection{Features}
+In this paper we only focus in a certain set of features from our dataset rather than using all of it. The features that we take into account are: Home team goal difference, away team goal difference, games won home team, games won away team, games against away team won, games against away team lost, overall rating of individual players of home team and overall rating of individual players of away team. All of the data is from the beginning of the last season up to the match that is being predicted. We do not use the betting odds provided by the dataset since they do not influence how a team performs in a game. Even though the betting odds provides more information about a match, we want to analyze only data that directly influences the result of a match. We also discard many of the team attributes, like formation, type of attack, type of defense, etc., since they are labels in the dataset rather than a number and there for cannot be quantifiable in their current state.
+
+\subsection{Training Set}
+For our training set, we use the features mentioned above (Section 2.2). It was decided use 88.5\% of our matches for training in order to use a high number of games for training. Due to some matches not having complete data, our matches got reduced to 21,364 matches.
+
+
+\subsection{Testing Set}
+For our testing set, we use the rest of our data, which is the remaining 11.5\%.
+
+
+\section{Tools}
+In order to conduct our experiments, we used Python 3 to create our system. Also, we took advantage of the Scikit Learn [2] library for python to use their classifier classes. Also the pandas [3] library for python was used to import the data into a DataFrame and handle all the data from our dataset.
+
+
+\section{Classifiers}
+In order to attempt to get the highest accuracy possible, with out features, serveral classifiers were trained and tested to get their accuracy and be able to select the most precise classifier. Scikit learn allows us to simplify the training of the classifiers. First the data is put into a DataFrame and we extract all the features into a Dataframe x, which doesn’t have the classification of that match, that is win, draw or defeat. The classification is stored into an array y such that the first element in the array y contains the result of the match in the first element of the DataFrame x. The variables x and y will then be used to train our classifiers.
+
+
+\subsection{Calculating the Accuracy}
+To calculate the accuracy of classifiers, we create a function called get\_accuracy (Listing 1) that takes in as parameters the name of the classifier, the instance of the classifier, the test size and the test set. We then user our classifier and predict the outcome and compare it to the result in the test set. If the outcome and the result are the same we add 1 to a variable x and after checking all the test set we divide x by test set size.
+
+
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{caption={This function is used to calculate the Accuracy of the classifiers}}
+\lstset{label={lst:code_direct}}
+%\lstset{basicstyle=\footnotesize}
+\begin{lstlisting}
+def get_accuracy(name,clf,test_size,compare):
+    pred = clf.predict(pred.tail(test_size))
+    x = 0
+    for i in range(0,test_size):
+if pred[i] == 
+      str(compare['label'][len(compare)
+      -test_size+i]):
+            x = x+1
+    accuracy = x/test_size
+    print(name + ":", accuracy) 
+
+\end{lstlisting}
+
+
+
+\subsection{SVM}
+First, we use scikit learn’s SVM library to instantiate the SVM classifier. We use scikit learn’s default settings for the SVM and use the function fit(X,y) to train it, by feeding the function with our x and y variables.
+
+\subsection{Naive Bayes}
+The second classifier used is a Naïve Bayes Classifier. It is also instantiatied with scikit learn’s default settings and trained with the same fit(X,y) function and x and y variables. 
+
+\subsection{K Nearest Neighbors}
+The third classifier is k nearest neighbor. For this classifier we train for k = 5, k = 7, k = 13, k = 21 and k = 23 to choose the k that gives us the highest accuracy. After testing for all of the k’s, the lowest k nearest neighbor classifier was k = 5. At k = 21 the kNN classifier peaked and in k = 23 dropped. So we focused on the k = 21 classifier, since it was the most reliable.
+
+\subsection{Logistic Regression}
+Finally, we used the Logistic Regression classifier. Just like the SVM and the Naïve bayes, we instantiated this classifier with the default settings and trained it with the fit(X,y) function and x and y variables. 
+
+
+\section{First Approach}
+My first approach into creating a predicting soccer match system was to obtain the freatures from the dataset and use all of the matches to train and test my classifiers. The four classifiers, SVM, Naïve Bayes, k Nearest Neighbor and linear regression were all trained with the 88.5\% of the matches in the dataset, that were not missing any any information. 18,916 matches were used for this training and the 2,448, 11.5\%, other matches were used to test the classifiiers and get the accuracy. For this approach, the results for the classifiers were 46.25\% for SVM, 47.88\% for the Naïve Bayes classifier, 50.32\% using k Nearest Neighbor and 50.04\% using Logistic Regression (\begin{figure}
+  \includegraphics[width=\linewidth]{allmatches.png}
+  \caption{Display for the results of the accuracy of SVM, Naïve Bayes, K Nearest Neighbor and Logistic Regression, respectively. The results are measure in percentage.}
+  \label{fig:allmatches}
+\end{figure}
+Figure \ref{fig:allmatches}). With this approach, we are able to get a max accuracy of 50.32\% when classifying matches from any of the top leagues in Europe although the precision of deciding win for every match in this approach is 46.25\%. Although this doesn’t seem like a very efficient system, 50.32\% is a good percentage for the first approach due to the uncertainty of matches in soccer.
+
+
+
+
+
+\section{The Second Approach}
+In this second approach, we try to increase the accuracy of the classification with the hypothesis that different leagues have different playing styles and different league configurations and many other things that change between them. Instead of mixing all the matches and leagues together, lets try and predict the matches for each individual league and evaluate the results.
+
+\subsection{La Liga Santander}
+In this second approach, we first take a look at the Spanish leage, La Liga Santander. From our dataset, we extract all the matches from 2008 to 2016 that belong to this league and we use them to, again, train our SVM classifier, Naïve Bayes classifier, k Nearest Neighbor classifier and the Logistic Regression classifier. Out of our dataset, we got 2,707 matches which 2,396 (88.5\%) are used to train the classifiers and 311 (11.5\%) matches are used for testing. The results we achieved were the following: SMV scored 48.23\%, Naïve Bayes scored 50.16\%, k Nearest Neighbor scored 50.48\% and lastly Logistic Regression scored 50.16\% (\begin{figure}
+  \includegraphics[width=\linewidth]{laliga.png}
+  \caption{Display for the results of the accuracy of SVM, Naïve Bayes, K Nearest Neighbor and Logistic Regression, respectively in the prediction of matches within the Spanish league, La Liga Santander. The results are measured in percentage.}
+  \label{fig:laliga}
+\end{figure}
+Figure \ref{fig:laliga})With this approach, in this league we were able to increase the accuracy of all of the classifiers. However, our max score was 50.48\%, which is a small improvement form our past score of 50.32\%.
+
+
+
+
+\subsection{Barclays Premier League}
+We now analyze the English league, Barclay’s Premier League.Same as above, we extract all of the matches from our dataset that belong to this league.The matches totaled 2,962 from 2008 to 2016. Again, we use our 88.5\% split for training and 11.5\% for testing, which are 2,621 matches used for training and 341 matches used for testing. We run our get\_accuracy function with out testing set and we get the following results for our classifiers. SVM achieved a 41.64\% accuracy. Naïve Bayes achieved an accuracy of 43.98\%. K Nearest Neighbor scored an accuracy of 41.48\%. Lastly, Logistic Regression guessed correctly 41.35\% of the time (\begin{figure}
+  \includegraphics[width=\linewidth]{premierleague.png}
+  \caption{Display for the results of the accuracy of SVM, Naïve Bayes, K Nearest Neighbor and Logistic Regression, respectively in the prediction of matches within the English league, Barclay’s Premier League. The results are measured in percentage.}
+  \label{fig:premierleague}
+\end{figure}
+Figure \ref{fig:premierleague}). Our results for predicting this league really dropped from our last result from La Liga. However, this was expected. The Barclay’s Premier League is the most unpredictable league. It is one of it’s known characteritics. As for example we have the Team Leicester City, who finished the season of 2014/2015 in 14th place out of 20 teams. The next season, 2015/2016 they ended in 1st place, becoming the champions of that season. Today, in the season of 2016/2017 they are back in 9th place, thus showing the unpredictability of this league, therefore, making it very hard to predict it.
+
+\subsection{Bundesliga}
+Next, we take a look at the German league, Bundesliga. Form the dataset we extract a total of 2,286 games. To this games we do our 88.5\% and 11.5\% split which is 2,102 matches for training and 274 matches for testing, respectively. One again, we use our get\_accuracy function on the classifiers: SVM, Naïve Bayes, k Nearest Neighbors and Logistic Regression. For SVM, we achieved an accuracy of 44.89\% predicting matches. Using Naïve Bayes, we raise that accuracy to 46.71\%. With k Nearest Neighbors we get our max accuracy of 54.98\%. Finally, with Logistic Regression we score a 45.25\% in accuracy (\begin{figure}
+  \includegraphics[width=\linewidth]{bundesliga.png}
+  \caption{Display for the results of the accuracy of SVM, Naïve Bayes, K Nearest Neighbor and Logistic Regression, respectively in the prediction of matches within the German league, Bundesliga. The results are measured in percentage.}
+  \label{fig:bundesliga}
+\end{figure}
+Figure \ref{fig:bundesliga}). By analyzing this league individually, we achieved a great accuracy of 54.98\% with the k Nearest Negihbors classifier, which means this league is more easily predictable and being able to build our desired system should be more viable if we only focus in this league. 
+
+
+\subsection{Serie A}
+The last league we analyze individually is the Italian league, Serie A. From our dataset we are able to extract 2,747 matches of the league that we can use. Once more, we train our classifiers with 88.5\% of the data for training and 11.5\% of data for testing, which equilize to 2,431 matches and 316 matches, respectively. Training our classifiers, we get the following results: SVM predicts 43.98\% of the matches accurately, Naïve Bayes predicts 50.63\%, k Nearest Neighbor predicts 52.53\% and lastly Logistic Regression scores 48.10\% for correct predictions (\begin{figure}
+  \includegraphics[width=\linewidth]{seriea.png}
+  \caption{Display for the results of the accuracy of SVM, Naïve Bayes, K Nearest Neighbor and Logistic Regression, respectively in the prediction of matches within the Italian league, Serie A. The results are measured in percentage.
+}
+  \label{fig:seriea}
+\end{figure}
+Figure \ref{fig:seriea}). With this league we are able to obtain a max accuracy of 52.53\% of accuracy. Again we can see that this league is more predictable than the English Premier League and the spanish league, La Liga Santander, therefore increasing the viability of our desired system.
+
+
+\section{Third Approach}
+In this third approach, we try to further improve our accuracy of predicting all soccer matches by using the results of all of our classifiers.
+
+\subsection{Voting}
+The voting algorithm takes in as parameters, a list with the instances of the classifiers and the input to the classifiers. Then, we compare the results of all of our classifiers, with our algorithm and we select the result that is a majority. However, by having only four classifiers we are prone to having our classifiers tie in the decision making, so we add a new classifier. We train a Bernoulli Naïve Bayes classifier, form our scikit learn library and again train it using the fit(X,y) function with our x and y variables. Now that we have 5 classifiers, the probability of having a tie in the decision of our prediction should be significantly lower. However, since it can still happen, we decide that when this happens we just choose the result from K Nearest Neighbors classifier since it turned to be the most accurate all of the time. Again we use 88.5\%, 18,916 matches, of all of our data to train the classifiers and we use 11.5\%, 2,448 matches, to test our voting classifier. After using our get\_accuracy function to test our voting classifier we en up with an accuracy of 37.5\% (\begin{figure}
+  \includegraphics[width=\linewidth]{allmatchesvoting.png}
+  \caption{Display for the results of the accuracy of SVM, Naïve Bayes, Bernoulli Naïve Bayes, K Nearest Neighbor and Logistic Regression and our voting classifier, respectively in the prediction of any match. The results are measured in percentage.
+}
+  \label{fig:voting}
+\end{figure}
+Figure \ref{fig:voting}). This meaning that this approach is not good and should not be used as the means to predict a soccer match.\\
+\\
+\\
+
+
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{caption={Voting Classifier Algorithm}}
+\lstset{label={lst:code_direct}}
+%\lstset{basicstyle=\footnotesize}
+\begin{lstlisting}
+def Voting(clfs, inp):
+    preds = []
+    decisions = []
+    vote = []
+
+    for clf in clfs:
+        pred = clf.predict(inp)
+        # print(pred)
+        preds.append(pred)
+
+    for i in range(len(preds[0])):
+        new = []
+        for clf in preds:
+            new.append(clf[i])
+        decisions.append(new)
+
+    for d in decisions:
+        if(d.count('Win') > d.count('Draw') and
+           d.count('Win') > d.count('Defeat')):
+            vote.append('Win')
+
+        elif (d.count('Draw') > d.count('Win') and
+              d.count('Draw') > d.count('Defeat')):
+            vote.append('Draw')
+
+        elif (d.count('Defeat') > d.count('Draw') 
+              and d.count('Defeat') >
+              d.count('Win')):
+            vote.append('Defeat')
+
+        else:
+            vote.append(d[2])
+
+        print("kNN Outcome:", d[3])
+
+    return vote
+\end{lstlisting}
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{Kaggle:kopka}
+Hugo Mathien. (2016). European Soccer Database (2). Retrieved from https://www.kaggle.com/hugomathien/soccer.
+
+\bibitem{ScikitLearn:kopka}
+Scikit\-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825\-2830, 2011.
+
+\bibitem{NLTK:kopka}
+NTLK, Bird, Steven, Edward Loper and Ewan Klein (2009),Natural Language Processing with Python. O’Reilly Media Inc.
+\end{thebibliography}
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
