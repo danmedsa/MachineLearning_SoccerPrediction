@@ -14,13 +14,11 @@ Dataset was obtained from: https://www.kaggle.com/hugomathien/soccer
 ## How to run the program:
 
 For easy and fast check, All_Matches_Pickled.py can be used. All the data needed has been pickled for fast access and usability. Uncomment the lines according to what you want to run (All leagues, La Liga, etc.) and run the program.
-
-(less than 10 sec.)
+  + (less than 10 sec.)
 
 
 For using the program that extracts all the data from the database ‘database.sqlite’ and trains the classifiers, run All_Matches.py. if you want to run for a certain league, go to line 413 and append the ‘WHERE league_id = ###’, the leagues that were used are in line 416 commented. Also, uncomment the correct Train Size and Test Size according to what you will test and train.
-
-(~45 min.)
+  + (~45 min.)
 
 
 To try the Voting Approach, run Voting.py. it uses already pickled classifiers to make it fast.
